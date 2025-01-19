@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ];
         }
 
-        header('Location: ../dashboard.php');
+        header('Location: ../login.php');
         exit();
     }
     $conn->close();
