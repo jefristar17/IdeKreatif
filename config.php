@@ -7,10 +7,10 @@ $passsword = ""; // password untuk akses database
 $database = "idekreatif"; // nama database yang digunakan
 
 // membuat koneksi ke databse menggunakan Mysql
-$$conn = mysqli_connect($host,$username,$password,$database);
+$conn = mysqli_connect($host,$username,$password,$database);
 
 // mengecek apakah koneksi berhasil
-if ($conn_connect_error) {
+if ($conn->connect_error) {
     // menampilkan pesan error jika koneksi gagal
     die("database gagal terkoneksi: " . $conn->connect_error);
 }
