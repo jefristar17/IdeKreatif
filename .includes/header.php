@@ -8,11 +8,15 @@ include "init_session.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- menambahkan link di dalam tag head-->
+    <link rel="stylesheet"
+    href="//cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css">
+    
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,
     initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
-
+    
     <title>Dashboard &mdash; IdeKreatif</title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
