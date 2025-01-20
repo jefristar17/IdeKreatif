@@ -4,8 +4,8 @@ session_start();
 $name = $_SESSION["name"];
 $role = $_SESSION["role"];
 // ambil notifikasi jika ada, kemudian hapus dari sesi
-$notificatian = $_SESSION['ntification'] ?? null;
-if ($notificatian){
+$notification = $_SESSION['notification'] ?? null;
+if ($notification){
     unset($_SESSION['notification']);
 }
 ?>
