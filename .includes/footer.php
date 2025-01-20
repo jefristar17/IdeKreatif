@@ -44,5 +44,12 @@
     <script src="assets/vendor/libs/summernote/summernote.js" defer></script>
     <!-- Active State JS -->
     <script src="assets/js/active-state-nav.js"></script>
+    <!--* jquery.js wajib karena DataTables adalah plugin jQuery.
+        * dataTables.min.js juga wajib karena file ini menyediakan semua fitur interaktif yang ingin anda gunakan pada tabel
+        * pastikan mengimpor dengan urutan yang benar: jquery.js diikuti oleh dataTables.min.js -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.min.js"></script>
+    <script src="https://cdn.database.net/2.2.1/js/dataTables.bootstrap5.min.js"></script>
+
 </body>
 </html>
