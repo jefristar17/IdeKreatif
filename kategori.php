@@ -14,11 +14,11 @@ include '.includes/toast_notification.php';
         <button type="button" class="btn btn-primary" data-bs-tonggle="modal" data-bs-target="#addCategory">
         Tambah kategori
         </button>
-</div>
+    </div>
 
 <div class="card-body">
     <div class="table-responsive text-nowrap">
-        <div id="datatable" class="table table-hover">
+        <table id="datatable" class="table table-hover">
             <thead>
                 <tr class="text-center">
                     <th width="50px">#</th>
