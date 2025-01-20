@@ -14,7 +14,7 @@ if (isset($_POST['simpan'])) {
     // Query untuk menambahkan data kategori ke dalam database
     $query = "INSERT INTO categories (category_name) VALUES ('$category_name')";
     $exec = mysqli_query($conn, $query);
-    
+
     // Menyimpan notifikasi berhasil atau gagal ke dalam session
     if ($exec) {
         $_SESSION['notification'] = [
@@ -58,5 +58,35 @@ if (isset($_POST['delete'])) {
     // Redirect kembali ke halaman kategori
     header('Location: kategori.php');
     exit();
+}
+?>
+
+<?php
+// Proses pembaruan kategori
+if (isset($_POST['update'])) {
+  // Mengambil data dari form pembaruan
+  $catID = $_POST['catID'];
+  $category_name = $_POST['category_name'];
+
+  // Query untuk memperbarui data kategori berdasarkan ID
+  $query = "UPDATE categories SET category_name = '$category_name' WHERE category_id='$catID'";
+  $exec = mysqli_query($conn, $query);
+
+  // Menyimpan notifikasi keberhasilan atau kegagalan ke dalam session
+  if ($exec) {
+    $_SESSION['notification'] = [
+      'type' => 'primary',
+      'message' => 'Kategori berhasil diperbarui!'
+    ];
+  } else {
+    $_SESSION['notification'] = [
+      'type' => 'danger',
+      'message' => 'Gagal memperbarui kategori: ' . mysqli_error($conn)
+    ];
+  }
+
+  // Redirect kembali ke halaman kategori
+  header('Location: kategori.php');
+  exit();
 }
 ?>
