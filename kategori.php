@@ -33,7 +33,7 @@ include '.includes/toast_notification.php';
            $exec = mysqli_query($conn, $query);
            while ($category = mysqli_fetch_assoc($exec)) :
            ?>
-          tr>
+          <tr>
           <!-- Menampilkan nomor, nama kategori, dan opsi -->
             <td><?= $index++; ?></td>
             <td><?= $category['category_name']; ?></td>
