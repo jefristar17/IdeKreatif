@@ -122,9 +122,9 @@ include '.includes/toast_notification.php';
 </bottom>
          </div>
          <div class="modal-body">
-          <form action="proses-kategori.php" method="POST">
+          <form action="proses_kategori.php" method="POST">
             <div>
-              <label for="namakategori" class="form-label">Nama kategori</label>
+              <label for="namaKategori" class="form-label">Nama kategori</label>
               <!-- input untuk nama kategori baru -->
                <input type="text" class="form-control" name="category_name"required/>
          </div>
