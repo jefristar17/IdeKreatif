@@ -23,8 +23,8 @@ if (isset($_POST['simpan'])) {
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $imagePath)) {
         // jika unggahan berhasil, masukan
         // data postingan ke dalam database
-        $query ="INSERT INTO posts (post_title, content, created_at, caterory_id, user_id, image_path) VALUES 
-        ('$postTitle', '$content', NOW(), $categoryId, $userId, '$imagePath')";
+        $query ="INSERT INTO posts (post_title, content, created_at, caterory_id, user_id, image_path) 
+        VALUES ('$postTitle', '$content', NOW(), $categoryId, $userId, '$imagePath')";
 
         if ($conn->query($query) === TRUE) {
             // notifikasi berhasil jika postingan berhasil di tambahkan
@@ -51,5 +51,31 @@ if (isset($_POST['simpan'])) {
         header('Location: dashboard.php');
         exit();
     }
+
+    // proses penghapusan postingan
+    if (isset($_POST['delete'])) {
+        // mengambil id post dari parameter url
+        $postID = $_POST['postID'];
+
+        // query untuk menghapus post berdasarkan id
+        $exec = mysqli_query($conn, "DELETE FROM posts WHERE id_post='$postID'");
+
+        // menyimpan notifikasi keberhasilan atau kegagalan ke dalam sestion
+        if ($exec) {
+            $_SESSION['notification'] = [
+                'type' => 'primary',
+                'message' => 'Post successfully deleted.'
+            ];
+        } else {
+            $_SESSION['notification'] = [
+                'type' => 'danger',
+                'message' => 'Error deleting post: ' . mysqli_error($conn)
+            ];
+        }
+    }
+
+    // redirect kembali ke halaman dashboard
+    header('Location: dashboard.php');
+    exit();
 ?>
 
