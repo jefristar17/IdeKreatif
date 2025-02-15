@@ -2,6 +2,7 @@
 // menghubungkan file konfirgurasi database
 include 'config.php';
 // memulai sesi php
+session_start();
 
 // mendapatkan id pengguna dari sesi
 $userId = $_SESSION["user_id"];
@@ -22,7 +23,8 @@ if (isset($_POST['simpan'])) {
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $imagePath)) {
         // jika unggahan berhasil, masukan
         // data postingan ke dalam database
-        $query ="INSERT INTO posts (post_title, content, created_at, caterory_id, user_id, image_path) VALUES ('$postTitle', '$content', NOW(), $categoryId, $userId, '$imagePath')";
+        $query ="INSERT INTO posts (post_title, content, created_at, caterory_id, user_id, image_path) VALUES 
+        ('$postTitle', '$content', NOW(), $categoryId, $userId, '$imagePath')";
 
         if ($conn->query($query) === TRUE) {
             // notifikasi berhasil jika postingan berhasil di tambahkan
