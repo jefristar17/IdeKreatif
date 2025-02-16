@@ -77,5 +77,63 @@ if (isset($_POST['simpan'])) {
     // redirect kembali ke halaman dashboard
     header('Location: dashboard.php');
     exit();
-?>
 
+
+    // menangani pembaruan data postingan
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
+        // mendapatkan data dari form
+        $postId = $_POST['post_id'];
+        $postTitle = $_POST["post_title"];
+        $content = $_POST["content"];
+        $categoryId = $_POST["category_id"];
+        $imageDir = "assets/img/uploads/"; // direktori penyimpanan gambar
+
+        // memeriksa apakah file gambar baru di unggah
+        if (!empty($_FILES["image_path"]["name"])) {
+            $imageName = $_FILES["image_path"]["name"];
+            $imagePath = $imageDir . $imageName;
+
+            // pindahkan file baru ke rektori tujuan
+            move_uploaded_file($_FILES["image_path"]["tmp_name"], $imagePath);
+
+            // hapus gambar lama
+            $queryOldImage = "SELECT image_path FROM posts WHERE id_post = $postId";
+            $resultOldImage = $conn->query($queryOldImage);
+            if ($resultOldImage->num_rows > 0) {
+                $OldImage = $resultOldImage->fetch_assoc()['image_path'];
+                if(file_exists($OldImage)) {
+                    unlink($OldImage); // menghapus file lama
+                }
+            }
+
+        } else {
+            // jika tidak ada file baru, gunakan gambar lama
+            $imagePathQuery = "SELECT image_path FROM posts WHERE id_post = $postId";
+            $result = $conn->query($imagePathQuery);
+            $imagePath = ($result->num_rows > 0) ? $result->fetch_assoc()['image_path'] : null;
+        }
+
+        // update data postingan didatabase
+        $queryUpdate = "UPDATE posts SET post_title = '$postTitle', 
+        content = '$content' category_id = $categoryId,
+        image_path = '$imagePath' WHERE id_post = $postId";
+
+        if ($conn->query($queryUpdate) === TRUE) {
+            // notifikasi berhasil
+            $_SESSION['notification'] = [
+                'type' => 'primary',
+                'message' => 'Postingan berhasil di perbarui.'
+            ];
+        } else {
+            // notifikasi gagal
+            $_SESSION['notification'] = [
+                'type' => 'danger',
+                'message' => 'Gagal memperbarui postingan.'
+            ];
+        }
+
+        // arahkan kehalaman dashboard
+        header('Location: dashboard.php');
+        exit();
+    }
+?>
