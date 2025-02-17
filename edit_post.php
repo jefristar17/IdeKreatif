@@ -66,8 +66,8 @@
                              if ($resultCategories->num_rows > 0) {
                                 while ($row = $resultCategories->fetch_assoc()) {
                                     // menandai kategori yanga sudah dipilih
-                                    $selected = ($row['category_id'] == $post['category_id']) ? "selected" : "";
-                                    echo "<option value='" . $row["category_id"] . "' $selected>" . $row['category_name'] . "</option>";
+                                    $selected = ($row["category_id"] == $post['category_id']) ? "selected" : "";
+                                    echo "<option value='" . $row["category_id"] . "' $selected>" . $row["category_name"] . "</option>";
                                 }
                              }
                              ?>
@@ -75,7 +75,7 @@
                           </div>
                           <!-- textarea untuk konten postingan -->
                            <div class="mb-3">
-                            <label for="content" class="form label">Konten</label>
+                            <label for="content" class="form-label">Konten</label>
                             <textarea class="form-control" id="content" name="content" required>
                             <?php echo $post['content']; ?></textarea>
                            </div>
