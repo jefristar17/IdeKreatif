@@ -56,7 +56,7 @@
                          <!-- dropdown untuk kategori -->
                           <div class="mb-3">
                             <label for="category_id" class="form-label">Kategori</label>
-                            <select class="form-select" id="category_id" name="kategory_id" required>
+                            <select class="form-select" id="category_id" name="category_id" required>
                              <option value="" selected disabled>Select one</option>
                              <?php 
                              // mengambil data kategori dari database
