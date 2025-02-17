@@ -15,7 +15,7 @@ if (isset($_POST['simpan'])) {
     $categoryId = $_POST["category_id"];
 
     // mengatur direktori penyimpanan file gambar
-    $imageDir = "assets/img/uploads/";
+    $imageDir = "assets/img/";
     $imageName = $_FILES["image"]["name"];
     $imagePath = $imageDir . basename($imageName); // path lengkap gambar
 
@@ -86,7 +86,7 @@ if (isset($_POST['simpan'])) {
         $postTitle = $_POST["post_title"];
         $content = $_POST["content"];
         $categoryId = $_POST["category_id"];
-        $imageDir = "assets/img/uploads/"; // direktori penyimpanan gambar
+        $imageDir = "assets/img/"; // direktori penyimpanan gambar
 
         // memeriksa apakah file gambar baru di unggah
         if (!empty($_FILES["image_path"]["name"])) {
