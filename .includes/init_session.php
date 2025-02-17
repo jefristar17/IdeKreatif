@@ -12,7 +12,7 @@ if ($notification){
 }
 /* periksa apakah sesi username dan role sudah ada,
 jika tidak arahkan ke halaman login */
-if (empty($_SESSION["usename"]) || empty($_SESSION["role"])) {
+if (empty($_SESSION["username"]) || empty($_SESSION["role"])) {
     $_SESSION['notification'] = [
         'type' => 'danger',
         'message' => 'Silakan login terlebih dahulu'
