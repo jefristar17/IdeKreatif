@@ -100,9 +100,9 @@ if (isset($_POST['simpan'])) {
             $queryOldImage = "SELECT image_path FROM posts WHERE id_post = $postId";
             $resultOldImage = $conn->query($queryOldImage);
             if ($resultOldImage->num_rows > 0) {
-                $OldImage = $resultOldImage->fetch_assoc()['image_path'];
-                if(file_exists($OldImage)) {
-                    unlink($OldImage); // menghapus file lama
+                $oldImage = $resultOldImage->fetch_assoc()['image_path'];
+                if(file_exists($oldImage)) {
+                    unlink($oldImage); // menghapus file lama
                 }
             }
 
