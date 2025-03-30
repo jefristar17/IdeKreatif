@@ -13,7 +13,7 @@ if (isset($_SESSION["username"]) || isset($_SESSION["role"])){
     'type' => 'danger',
     'message' => 'Silakan logout terlebih dahulu'
   ];
-  header('location: ../dashboard');
+  header('location: ../dashboard.php');
 }
 ?>
 
